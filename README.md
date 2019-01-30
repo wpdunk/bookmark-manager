@@ -11,6 +11,11 @@ As a user.
 So that I can visit my favourite sites quickly.
 I want to see a list of my favourite sites.
 
+*Creating bookmarks*
+As a user.
+So that I can save a favourite site.
+I want to add a bookmark to Bookmark Manager
+
 
 ## Database Setup
 
