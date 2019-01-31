@@ -31,9 +31,18 @@ describe Bookmark do
 
      bookmarks = Bookmark.all
 
+     p "peeing bookmark"
+     p bookmark
+
+     p "peeing bookmarks:"
+     p bookmarks
+
+     p "peeing first:"
+     p bookmarks.first
+
      expect(bookmarks.length).to eq 3
      expect(bookmarks.first).to be_a Bookmark
-     expect(bookmarks.first.id).to eq bookmark.first['id']
+     expect(bookmarks.first.id).to eq bookmark.id
      expect(bookmarks.first.title).to eq 'Makers Academy'
      expect(bookmarks.first.url).to eq 'http://www.makersacademy.com'
     end
@@ -50,11 +59,11 @@ describe Bookmark do
     #   expect(Bookmark.all).to include 'http://www.testbookmark.com' && 'Test Bookmark'
     # end
 
-    xit 'creates a new bookmark' do
-      bookmark = Bookmark.add(url: 'http://www.testbookmark.com', title: 'Test Bookmark').first
+    it 'creates a new bookmark' do
+      bookmark = Bookmark.add(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
 
-      expect(bookmark['url']).to eq 'http://www.testbookmark.com'
-      expect(bookmark['title']).to eq 'Test Bookmark'
+      expect(bookmark.url).to eq 'http://www.testbookmark.com'
+      expect(bookmark.title).to eq 'Test Bookmark'
     end
 
 

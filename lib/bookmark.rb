@@ -36,18 +36,14 @@ class Bookmark
   # end
 
   def self.add(url:, title:)
-    return false unless is_url?(url)
+    # return false unless is_url?(url)
     if ENV['ENVIRONMENT'] == 'test'
       connection = PG.connect(dbname: 'bookmark_manager_test')
     else
       connection = PG.connect(dbname: 'bookmark_manager')
     end
     result = connection.exec("INSERT INTO bookmarks (url, title) VALUES('#{url}', '#{title}') RETURNING id, title, url;")
-    p "result 1 ="
-    p result
-    result_2 = Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
-    p "result 2 ="
-    p result_2
+    Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
 end
