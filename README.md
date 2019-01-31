@@ -16,6 +16,11 @@ As a user.
 So that I can save a favourite site.
 I want to add a bookmark to Bookmark Manager
 
+*Delete Bookmarks*
+As a user
+So I can remove my bookmark from Bookmark Manager
+I want to delete a bookmark
+
 
 ## Database Setup
 
