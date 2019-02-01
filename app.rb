@@ -7,6 +7,7 @@ class BookmarkManager < Sinatra::Base
 
   get '/' do
     'Bookmark Manager'
+    # redirect('/bookmarks')
   end
 
   get '/bookmarks' do
@@ -28,7 +29,19 @@ class BookmarkManager < Sinatra::Base
     # connection.exec("DELETE FROM bookmarks WHERE id = #{params['id']}")
     Bookmark.delete(id: params[:id])
     redirect '/bookmarks'
-end
+  end
+
+  # get /bookmarks/<%= bookmark.id %>/edit do
+  get '/bookmarks/:id/edit' do
+    # @bookmark_id = params[:id]
+    @bookmark = Bookmark.find(id: params[:id])
+    erb :'bookmarks/edit'
+  end
+
+  patch '/bookmarks/:id' do
+    Bookmark.update(id: params[:id], title: params[:title], url: params[:url])
+    redirect('/bookmarks')
+  end
 
   run! if app_file == $0
 end
