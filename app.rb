@@ -3,6 +3,8 @@ require 'sinatra/flash'
 require './lib/bookmark'
 require './database_connection_setup'
 require 'uri'
+require 'pry'
+
 
 class BookmarkManager < Sinatra::Base
 
@@ -53,8 +55,14 @@ class BookmarkManager < Sinatra::Base
   end
 
   post '/bookmarks/:id/comments' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    connection.exec("INSERT INTO comments (text, bookmark_id) VALUES('#{params[:comment]}', '#{params[:id]}');")
+    # bookmark = Bookmark.find(params[:id])
+    # bookmark.comments.create(:)
+    # p "pee comment"
+    p params
+    # p "pee id"
+    # p params[:id]
+    connection = PG.connect(dbname: 'bookmark_manager')
+    connection.exec("INSERT INTO comments (text, bookmark_id) VALUES('#{params[:comment]}', #{params[:id]});")
     redirect '/bookmarks'
   end
 

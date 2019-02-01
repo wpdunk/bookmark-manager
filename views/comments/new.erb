@@ -3,6 +3,9 @@
   <div class="container">
     <form action="/bookmarks/<%= @bookmark_id %>/comments" method="POST">
       <input name="comment" type="text" />
+
+      <!-- <input type='hidden' name='id' value='<%= @bookmark_id %>'/> -->
+
       <input value="Submit" type="submit" />
     </form>
   </div>
