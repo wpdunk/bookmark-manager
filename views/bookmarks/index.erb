@@ -1,17 +1,33 @@
-<h1>Look at all these bookmarks</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<body>
+  <div class="container">
+  <h1>Look at all these bookmarks</h1>
+  <h2><%= flash[:notice] %></h2>
+  <ul>
+    <% @bookmarks.each do |bookmark| %>
+      <li class="bookmark" id="bookmark-<%= bookmark.id %>">
+        <a href="<%= bookmark.url %>"><%= bookmark.title %></a>
+        <form action="/bookmarks/<%= bookmark.id %>" method="post">
+            <input type='hidden' name='_method' value='DELETE'/>
+            <input class="waves-effect waves-light btn" type="submit" value="Delete" />
+        </form>
+        <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+          <input class="waves-effect waves-light btn" type="submit" value="Edit" />
+        </form>
+        <form action="/bookmarks/<%= bookmark.id %>/comments/new" method="get">
+          <input class="waves-effect waves-light btn" type="submit" value="Add Comment" />
+        </form>
+        <ul>
+          <% bookmark.comments.each do |comment| %>
+            <li><%= comment['text'] %></li>
+          <% end %>
+        </ul>
+      </li>
 
-<ul>
-  <% @bookmarks.each do |bookmark| %>
-    <li class="bookmark" id="bookmark-<%= bookmark.id %>">
-      <a href="<%= bookmark.url %>"><%= bookmark.title %></a>
-      <form action="/bookmarks/<%= bookmark.id %>" method="post">
-          <input type='hidden' name='_method' value='DELETE'/>
-          <input type="submit" value="Delete" />
-      </form>
-      <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
-        <input type="submit" value="Edit" />
-      </form>
-    </li>
-
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+  <p>
+  <%= flash[:notice] %>
+  </p>
+  </div>
+</body>

@@ -1,0 +1,9 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<body>
+  <div class="container">
+    <form action="/bookmarks/<%= @bookmark_id %>/comments" method="POST">
+      <input name="comment" type="text" />
+      <input value="Submit" type="submit" />
+    </form>
+  </div>
+</body>

@@ -1,5 +1,12 @@
-<form action="/bookmarks" method="post">
-  <input type="text" name="url">
-  <input type="text" name="title" placeholder="Title" />
-  <input type="submit" value="Submit">
-</form>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<body>
+  <div class="container">
+  <form action="/bookmarks" method="post">
+    <label for="URL">URL:</label>
+    <input type="text" name="url">
+    <label for="title">Title:</label>
+    <input type="text" name="title" placeholder="Title" />
+    <input class="waves-effect waves-light btn" type="submit" value="Submit">
+  </form>
+  </div>
+</body>
